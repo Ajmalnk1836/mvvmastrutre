@@ -16,10 +16,10 @@ class UserviewMOdel extends ChangeNotifier {
 
     return UserToken(token: token.toString());
   }
-
+ 
   Future<bool> removeUser() async {
     final sharedPref = await SharedPreferences.getInstance();
     sharedPref.clear();
     return true;
-  }
+  }  
 }

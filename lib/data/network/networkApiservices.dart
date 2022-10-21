@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:mvvmstructre/data/app_exception.dart';
@@ -10,9 +11,9 @@ class NetworkApiServices extends BasApiServices {
   Future getApiResponses(String url) async {
     dynamic finalResponse;
     try {
-      final response =
-          await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
+      dynamic response = await http.get(Uri.parse(url));
       finalResponse = returnResponses(response);
+      log(finalResponse);
     } on SocketException {
       throw FetchDataExceptions("No intenet Connection");
     }
